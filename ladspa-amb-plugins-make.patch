@@ -1,0 +1,35 @@
+--- AMB-plugins-0.1.0/Makefile.orig	2016-09-26 21:12:46.451179651 +0200
++++ AMB-plugins-0.1.0/Makefile	2016-09-26 21:12:49.164512952 +0200
+@@ -1,27 +1,27 @@
+-
++CXX=g++
+ CPPFLAGS += -I. -fPIC -D_REENTRANT -Wall -O3
++INSTALL_PLUGINS_DIR=/usr/lib/ladspa
+ 
+ 
+ all:	ambis1.so ambis2.so
+ 
+ 
+ ambis1.so:	ambis1.o ambis1_if.o filter1.o
+-	g++ -shared -o $@ ambis1.o ambis1_if.o filter1.o
++	$(CXX) -shared -o $@ ambis1.o ambis1_if.o filter1.o
+ 
+ ambis1.o:	ladspaplugin.h ambis1.h filter1.h
+ ambis1_if.o:	ladspaplugin.h ambis1.h
+ 
+ 
+ ambis2.so:	ambis2.o ambis2_if.o 
+-	g++ -shared -o $@ ambis2.o ambis2_if.o
++	$(CXX) -shared -o $@ ambis2.o ambis2_if.o
+ 
+ ambis2.o:	ladspaplugin.h ambis2.h
+ ambis2_if.o:	ladspaplugin.h ambis2.h
+ 
+ 
+ install:	all
+-	/usr/bin/install -m 755 *.so /usr/lib/ladspa
+-	/bin/rm -rf /usr/bin/ladspa/ambis.so
++	/usr/bin/install -m 755 *.so $(DESTDIR)$(INSTALL_PLUGINS_DIR)
+ 
+ 
+ DIR := $(shell basename `pwd`)
