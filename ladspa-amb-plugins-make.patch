@@ -16,7 +16,7 @@ diff -dur AMB-plugins-0.8.1.orig/Makefile AMB-plugins-0.8.1/Makefile
  
  ambisonic0.so:	ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
 -	g++ -shared -o $@ ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
-+	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
++	$(CXX) -shared $(LDFLAGS) -o $@ ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
  
  ambisonic0.o:	ladspaplugin.h ambisonic0.h
  ambisonic0_if.o:	ladspaplugin.h ambisonic0.h
@@ -24,7 +24,7 @@ diff -dur AMB-plugins-0.8.1.orig/Makefile AMB-plugins-0.8.1/Makefile
  
  ambisonic1.so:	ambisonic1.o ambisonic1_if.o filter1.o
 -	g++ -shared -o $@ ambisonic1.o ambisonic1_if.o filter1.o
-+	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic1.o ambisonic1_if.o filter1.o
++	$(CXX) -shared $(LDFLAGS) -o $@ ambisonic1.o ambisonic1_if.o filter1.o
  
  ambisonic1.o:	ladspaplugin.h ambisonic1.h filter1.h
  ambisonic1_if.o:	ladspaplugin.h ambisonic1.h
@@ -32,7 +32,7 @@ diff -dur AMB-plugins-0.8.1.orig/Makefile AMB-plugins-0.8.1/Makefile
  
  ambisonic2.so:	ambisonic2.o ambisonic2_if.o 
 -	g++ -shared -o $@ ambisonic2.o ambisonic2_if.o
-+	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic2.o ambisonic2_if.o
++	$(CXX) -shared $(LDFLAGS) -o $@ ambisonic2.o ambisonic2_if.o
  
  ambisonic2.o:	ladspaplugin.h ambisonic2.h
  ambisonic2_if.o:	ladspaplugin.h ambisonic2.h
@@ -40,7 +40,7 @@ diff -dur AMB-plugins-0.8.1.orig/Makefile AMB-plugins-0.8.1/Makefile
  
  ambisonic3.so:	ambisonic3.o ambisonic3_if.o 
 -	g++ -shared -o $@ ambisonic3.o ambisonic3_if.o
-+	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic3.o ambisonic3_if.o
++	$(CXX) -shared $(LDFLAGS) -o $@ ambisonic3.o ambisonic3_if.o
  
  ambisonic3.o:	ladspaplugin.h ambisonic3.h
  ambisonic3_if.o:	ladspaplugin.h ambisonic3.h
