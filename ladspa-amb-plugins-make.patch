@@ -1,35 +1,46 @@
---- AMB-plugins-0.1.0/Makefile.orig	2016-09-26 21:12:46.451179651 +0200
-+++ AMB-plugins-0.1.0/Makefile	2016-09-26 21:12:49.164512952 +0200
-@@ -1,27 +1,27 @@
+diff -dur AMB-plugins-0.8.1.orig/Makefile AMB-plugins-0.8.1/Makefile
+--- AMB-plugins-0.8.1.orig/Makefile	2010-11-14 23:46:42.000000000 +0100
++++ AMB-plugins-0.8.1/Makefile	2016-10-10 20:16:21.527284513 +0200
+@@ -14,7 +14,8 @@
+ #    along with this program; if not, write to the Free Software
+ #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ 
 -
-+CXX=g++
++CXX = g++
++LDFLAGS =
  CPPFLAGS += -I. -fPIC -D_REENTRANT -Wall -O3
-+INSTALL_PLUGINS_DIR=/usr/lib/ladspa
  
  
- all:	ambis1.so ambis2.so
+@@ -22,28 +23,28 @@
  
  
- ambis1.so:	ambis1.o ambis1_if.o filter1.o
--	g++ -shared -o $@ ambis1.o ambis1_if.o filter1.o
-+	$(CXX) -shared -o $@ ambis1.o ambis1_if.o filter1.o
+ ambisonic0.so:	ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
+-	g++ -shared -o $@ ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
++	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic0.o ambisonic0_if.o virtmic.o allpass.o
  
- ambis1.o:	ladspaplugin.h ambis1.h filter1.h
- ambis1_if.o:	ladspaplugin.h ambis1.h
- 
- 
- ambis2.so:	ambis2.o ambis2_if.o 
--	g++ -shared -o $@ ambis2.o ambis2_if.o
-+	$(CXX) -shared -o $@ ambis2.o ambis2_if.o
- 
- ambis2.o:	ladspaplugin.h ambis2.h
- ambis2_if.o:	ladspaplugin.h ambis2.h
+ ambisonic0.o:	ladspaplugin.h ambisonic0.h
+ ambisonic0_if.o:	ladspaplugin.h ambisonic0.h
  
  
- install:	all
--	/usr/bin/install -m 755 *.so /usr/lib/ladspa
--	/bin/rm -rf /usr/bin/ladspa/ambis.so
-+	/usr/bin/install -m 755 *.so $(DESTDIR)$(INSTALL_PLUGINS_DIR)
+ ambisonic1.so:	ambisonic1.o ambisonic1_if.o filter1.o
+-	g++ -shared -o $@ ambisonic1.o ambisonic1_if.o filter1.o
++	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic1.o ambisonic1_if.o filter1.o
+ 
+ ambisonic1.o:	ladspaplugin.h ambisonic1.h filter1.h
+ ambisonic1_if.o:	ladspaplugin.h ambisonic1.h
  
  
- DIR := $(shell basename `pwd`)
+ ambisonic2.so:	ambisonic2.o ambisonic2_if.o 
+-	g++ -shared -o $@ ambisonic2.o ambisonic2_if.o
++	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic2.o ambisonic2_if.o
+ 
+ ambisonic2.o:	ladspaplugin.h ambisonic2.h
+ ambisonic2_if.o:	ladspaplugin.h ambisonic2.h
+ 
+ 
+ ambisonic3.so:	ambisonic3.o ambisonic3_if.o 
+-	g++ -shared -o $@ ambisonic3.o ambisonic3_if.o
++	$(GXX) -shared $(LDFLAGS) -o $@ ambisonic3.o ambisonic3_if.o
+ 
+ ambisonic3.o:	ladspaplugin.h ambisonic3.h
+ ambisonic3_if.o:	ladspaplugin.h ambisonic3.h

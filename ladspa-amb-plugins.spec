@@ -1,15 +1,15 @@
 Summary:	AMB (Ambisonics decoder and panner) LADSPA plugins
 Summary(pl.UTF-8):	Wtyczki LADSPA AMB (dekodery i pannery Ambisonics)
 Name:		ladspa-amb-plugins
-Version:	0.1.0
+Version:	0.8.1
 Release:	1
 License:	GPL v2+
 Group:		Applications/Sound
 #Source0Download: http://users.skynet.be/solaris/linuxaudio/getit.html
-Source0:	http://users.skynet.be/solaris/linuxaudio/downloads/AMB-plugins-%{version}.tar.bz2
-# Source0-md5:	88db5ecbe29e0fd75145e7e3beac69d1
+Source0:	http://kokkinizita.linuxaudio.org/linuxaudio/downloads/AMB-plugins-%{version}.tar.bz2
+# Source0-md5:	496d8d2bf6036611b6b4aa7f56325a52
 Patch0:		%{name}-make.patch
-URL:		http://users.skynet.be/solaris/linuxaudio/
+URL:		http://kokkinizita.linuxaudio.org/linuxaudio/ladspa/index.htmlhttp://kokkinizita.linuxaudio.org/linuxaudio/ladspa/index.html
 BuildRequires:	ladspa-devel
 BuildRequires:	libstdc++-devel
 Requires:	ladspa-common
@@ -25,20 +25,19 @@ Ambisonics).
 
 %prep
 %setup -q -n AMB-plugins-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 %{__make} \
 	CXX="%{__cxx}" \
+	LDFLAGS="%{rpmldflags}" \
 	CPPFLAGS="-I. -fPIC -D_REENTRANT -Wall %{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}/ladspa
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	INSTALL_PLUGINS_DIR=%{_libdir}/ladspa
+cp -p *.so $RPM_BUILD_ROOT%{_libdir}/ladspa
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -46,5 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README
-%attr(755,root,root) %{_libdir}/ladspa/ambis1.so
-%attr(755,root,root) %{_libdir}/ladspa/ambis2.so
+%attr(755,root,root) %{_libdir}/ladspa/ambisonic0.so
+%attr(755,root,root) %{_libdir}/ladspa/ambisonic1.so
+%attr(755,root,root) %{_libdir}/ladspa/ambisonic2.so
+%attr(755,root,root) %{_libdir}/ladspa/ambisonic3.so
