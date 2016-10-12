@@ -2,7 +2,7 @@ Summary:	AMB (Ambisonics decoder and panner) LADSPA plugins
 Summary(pl.UTF-8):	Wtyczki LADSPA AMB (dekodery i pannery Ambisonics)
 Name:		ladspa-amb-plugins
 Version:	0.8.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Sound
 #Source0Download: http://users.skynet.be/solaris/linuxaudio/getit.html
@@ -15,6 +15,8 @@ BuildRequires:	libstdc++-devel
 Requires:	ladspa-common
 Obsoletes:	ladspa-mcp-plugins-alsa-modular-synth-examples
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_noautoprovfiles	%{_libdir}/ladspa
 
 %description
 AMB (Ambisonics surround sound decoder and panner) LADSPA plugins.
