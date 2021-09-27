@@ -5,15 +5,13 @@ Version:	0.8.1
 Release:	2
 License:	GPL v2+
 Group:		Applications/Sound
-#Source0Download: http://users.skynet.be/solaris/linuxaudio/getit.html
 Source0:	http://kokkinizita.linuxaudio.org/linuxaudio/downloads/AMB-plugins-%{version}.tar.bz2
 # Source0-md5:	496d8d2bf6036611b6b4aa7f56325a52
 Patch0:		%{name}-make.patch
-URL:		http://kokkinizita.linuxaudio.org/linuxaudio/ladspa/index.htmlhttp://kokkinizita.linuxaudio.org/linuxaudio/ladspa/index.html
+URL:		http://kokkinizita.linuxaudio.org/linuxaudio/ladspa/index.html
 BuildRequires:	ladspa-devel
 BuildRequires:	libstdc++-devel
 Requires:	ladspa-common
-Obsoletes:	ladspa-mcp-plugins-alsa-modular-synth-examples
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoprovfiles	%{_libdir}/ladspa
