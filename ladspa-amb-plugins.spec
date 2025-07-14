@@ -25,7 +25,7 @@ Ambisonics).
 
 %prep
 %setup -q -n AMB-plugins-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__make} \
